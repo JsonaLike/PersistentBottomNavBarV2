@@ -4,6 +4,8 @@ import 'package:persistent_bottom_nav_bar_v2_example_project/interactive_example
 import 'package:persistent_bottom_nav_bar_v2_example_project/modal-screen.dart';
 import 'package:persistent_bottom_nav_bar_v2_example_project/screens.dart';
 
+import 'screens.dart';
+
 void main() => runApp(PersistenBottomNavBarDemo());
 
 class PersistenBottomNavBarDemo extends StatelessWidget {
