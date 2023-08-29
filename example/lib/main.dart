@@ -4,8 +4,6 @@ import 'package:persistent_bottom_nav_bar_v2_example_project/interactive_example
 import 'package:persistent_bottom_nav_bar_v2_example_project/modal-screen.dart';
 import 'package:persistent_bottom_nav_bar_v2_example_project/screens.dart';
 
-import 'screens.dart';
-
 void main() => runApp(PersistenBottomNavBarDemo());
 
 class PersistenBottomNavBarDemo extends StatelessWidget {
@@ -26,7 +24,7 @@ class PersistenBottomNavBarDemo extends StatelessWidget {
 }
 
 class MainMenu extends StatefulWidget {
-  MainMenu({Key key}) : super(key: key);
+  MainMenu({Key? key}) : super(key: key);
 
   @override
   _MainMenuState createState() => _MainMenuState();
@@ -80,15 +78,15 @@ class _MainMenuState extends State<MainMenu> {
 // ----------------------- Using a provided Navbar style ---------------------//
 
 class ProvidedStyleExample extends StatefulWidget {
-  ProvidedStyleExample({Key key}) : super(key: key);
+  ProvidedStyleExample({Key? key}) : super(key: key);
 
   @override
   _ProvidedStyleExampleState createState() => _ProvidedStyleExampleState();
 }
 
 class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
-  PersistentTabController _controller;
-  bool _hideNavBar;
+  PersistentTabController? _controller;
+  bool? _hideNavBar;
 
   @override
   void initState() {
@@ -100,42 +98,42 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
   List<Widget> _buildScreens() {
     return [
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar;
           });
         },
       ),
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar!;
           });
         },
       ),
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar;
           });
         },
       ),
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar!;
           });
         },
       ),
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar!;
           });
         },
       ),
@@ -178,7 +176,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
             },
           ),
           onPressed: (context) {
-            pushDynamicScreen(context,
+            pushDynamicScreen(context!,
                 screen: SampleModalScreen(), withNavBar: true);
           }),
       PersistentBottomNavBarItem(
@@ -241,7 +239,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         bottomScreenMargin: 0.0,
         onWillPop: (context) async {
           await showDialog(
-            context: context,
+            context: context!,
             useSafeArea: true,
             builder: (context) => Container(
               height: 50.0,
@@ -281,15 +279,15 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
 // ------------------------ Using a custom Navbar style ----------------------//
 
 class CustomWidgetExample extends StatefulWidget {
-  CustomWidgetExample({Key key}) : super(key: key);
+  CustomWidgetExample({Key? key}) : super(key: key);
 
   @override
   _CustomWidgetExampleState createState() => _CustomWidgetExampleState();
 }
 
 class _CustomWidgetExampleState extends State<CustomWidgetExample> {
-  PersistentTabController _controller;
-  bool _hideNavBar;
+  PersistentTabController? _controller;
+  bool? _hideNavBar;
 
   @override
   void initState() {
@@ -301,42 +299,42 @@ class _CustomWidgetExampleState extends State<CustomWidgetExample> {
   List<Widget> _buildScreens() {
     return [
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar;
           });
         },
       ),
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar;
           });
         },
       ),
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar;
           });
         },
       ),
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar;
           });
         },
       ),
       MainScreen(
-        hideStatus: _hideNavBar,
+        hideStatus: _hideNavBar!,
         onScreenHideButtonPressed: () {
           setState(() {
-            _hideNavBar = !_hideNavBar;
+            _hideNavBar = _hideNavBar;
           });
         },
       ),
@@ -411,10 +409,10 @@ class _CustomWidgetExampleState extends State<CustomWidgetExample> {
           items: _navBarsItems(),
           onItemSelected: (index) {
             setState(() {
-              navBarEssentials.onItemSelected(index);
+              navBarEssentials.onItemSelected!(index);
             });
           },
-          selectedIndex: _controller.index,
+          selectedIndex: _controller!.index,
         ),
       ),
     );
@@ -427,10 +425,10 @@ class CustomNavBarWidget extends StatelessWidget {
   final ValueChanged<int> onItemSelected;
 
   CustomNavBarWidget({
-    Key key,
-    this.selectedIndex,
-    @required this.items,
-    this.onItemSelected,
+    Key? key,
+    required this.selectedIndex,
+    required this.items,
+    required this.onItemSelected,
   });
 
   Widget _buildItem(PersistentBottomNavBarItem item, bool isSelected) {
@@ -462,7 +460,7 @@ class CustomNavBarWidget extends StatelessWidget {
               type: MaterialType.transparency,
               child: FittedBox(
                 child: Text(
-                  item.title,
+                  item.title!,
                   style: TextStyle(
                       color: isSelected
                           ? (item.activeColorSecondary == null
